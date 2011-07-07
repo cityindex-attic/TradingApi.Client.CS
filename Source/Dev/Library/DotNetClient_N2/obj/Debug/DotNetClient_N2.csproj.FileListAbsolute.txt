@@ -1,0 +1,7 @@
+C:\Dev\UTP\Dev\Library\Lightstreamer.Clients\DotNetClient_N2\bin\Debug\DotNetClient_N2.dll
+C:\Dev\UTP\Dev\Library\Lightstreamer.Clients\DotNetClient_N2\bin\Debug\DotNetClient_N2.pdb
+C:\Dev\UTP\Dev\Library\Lightstreamer.Clients\DotNetClient_N2\bin\Debug\log4net.dll
+C:\Dev\UTP\Dev\Library\Lightstreamer.Clients\DotNetClient_N2\bin\Debug\log4net.pdb
+C:\Dev\UTP\Dev\Library\Lightstreamer.Clients\DotNetClient_N2\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\UTP\Dev\Library\Lightstreamer.Clients\DotNetClient_N2\obj\Debug\DotNetClient_N2.dll
+C:\Dev\UTP\Dev\Library\Lightstreamer.Clients\DotNetClient_N2\obj\Debug\DotNetClient_N2.pdb
