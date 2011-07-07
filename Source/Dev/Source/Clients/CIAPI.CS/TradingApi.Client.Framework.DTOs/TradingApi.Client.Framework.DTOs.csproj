@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1B0223DF-0DAB-46F0-B2F1-D59C7A3A882E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TradingApi.Client.Framework.DTOs</RootNamespace>
+    <AssemblyName>TradingApi.Client.Framework.DTOs</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiActiveStopLimitOrderDTO.cs" />
+    <Compile Include="ApiBasicStopLimitOrderDTO.cs" />
+    <Compile Include="ApiIfDoneResponseDTO.cs" />
+    <Compile Include="ApiOpenPositionDTO.cs" />
+    <Compile Include="ApiOrderResponseDTO.cs" />
+    <Compile Include="ApiQuoteResponseDTO.cs" />
+    <Compile Include="ApiStopLimitOrderHistoryDTO.cs" />
+    <Compile Include="ApiStopLimitResponseDTO.cs" />
+    <Compile Include="ApiTradeHistoryDTO.cs" />
+    <Compile Include="ApiTradeOrderResponseDTO.cs" />
+    <Compile Include="ClientAccountMarginDTO.cs" />
+    <Compile Include="CreateSessionResponseDTO.cs" />
+    <Compile Include="CancelOrderRequestDTO.cs" />
+    <Compile Include="ErrorCode.cs" />
+    <Compile Include="ErrorResponseDTO.cs" />
+    <Compile Include="G2SessionValidationResponseDTO.cs" />
+    <Compile Include="GatewayIfDoneDTO.cs" />
+    <Compile Include="GatewayOrderDTO.cs" />
+    <Compile Include="GatewayStopLimitOrderDTO.cs" />
+    <Compile Include="GetNewsDetailResponseDTO.cs" />
+    <Compile Include="GetPriceBarResponseDTO.cs" />
+    <Compile Include="GetPriceTickResponseDTO.cs" />
+    <Compile Include="ListActiveStopLimitOrderResponseDTO.cs" />
+    <Compile Include="ListCfdMarketsResponseDTO.cs" />
+    <Compile Include="ListNewsHeadlinesResponseDTO.cs" />
+    <Compile Include="ListOpenPositionsResponseDTO.cs" />
+    <Compile Include="ListOrdersResponseDTO.cs" />
+    <Compile Include="ListSpreadMarketsResponseDTO.cs" />
+    <Compile Include="ListStopLimitOrderHistoryResponseDTO.cs" />
+    <Compile Include="ListTradeHistoryResponseDTO.cs" />
+    <Compile Include="LogOnRequestDTO.cs" />
+    <Compile Include="MarketDTO.cs" />
+    <Compile Include="NewsDetailDTO.cs" />
+    <Compile Include="NewsDTO.cs" />
+    <Compile Include="NewStopLimitOrderRequestDTO.cs" />
+    <Compile Include="NewTradeOrderRequestDTO.cs" />
+    <Compile Include="OcoOrderRequestDTO.cs" />
+    <Compile Include="OrderDTO.cs" />
+    <Compile Include="PriceBarDTO.cs" />
+    <Compile Include="PriceDTO.cs" />
+    <Compile Include="PriceTickDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteDTO.cs" />
+    <Compile Include="SessionDeletionRequestDTO.cs" />
+    <Compile Include="SessionDeletionResponseDTO.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+  <!-- Custom Assembly Versioning done in the team build process-->
+	<UsingTask
+		TaskName="Microsoft.TeamFoundation.Build.Tasks.GetBuildProperties"
+		AssemblyFile="$(MSBuildProgramFiles32)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\Microsoft.TeamFoundation.Build.ProcessComponents.dll"
+	  Condition="' $(BuildUri) '!='  '"/>
+
+	<Target Name="BeforeBuild" Condition="' $(BuildUri) '!='  '">
+		<GetBuildProperties TeamFoundationServerUrl="$(TeamFoundationServerUrl)" BuildUri="$(BuildUri)">
+			<Output TaskParameter="BuildNumber" PropertyName="BuildNumber" />
+		</GetBuildProperties>
+
+		<PropertyGroup>
+			<BuildNumberSplitLocation>$([MSBuild]::Add($(BuildNumber.LastIndexOf('_')),1))</BuildNumberSplitLocation>
+		</PropertyGroup>
+
+		<ItemGroup>
+			<AssemblyVersionLines Include="[assembly:AssemblyFileVersion(&quot;$(BuildNumber.Substring($(BuildNumberSplitLocation)))&quot;)]" />
+		</ItemGroup>
+
+		<Exec Command="attrib -r &quot;$(ProjectDir)\Properties\AssemblyInfo.cs&quot;" ContinueOnError="false" />
+			<Message Text="Lines being added: @(AssemblyVersionLines)" Importance="high" />
+		<WriteLinesToFile File="$(ProjectDir)\Properties\AssemblyInfo.cs" Lines="@(AssemblyVersionLines)" />
+	</Target>
+  
+</Project>
