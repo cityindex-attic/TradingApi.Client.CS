@@ -72,7 +72,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
-      <HintPath>..\..\..\..\..\..\UTP\Dev\Library\Common.Logging-2.0.0\2.0\debug\Common.Logging.dll</HintPath>
+      <HintPath>..\..\..\..\Library\Common.Logging-2.0.0\2.0\debug\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging.Log4Net">
       <HintPath>..\..\..\..\Library\Common.Logging-2.0.0\2.0\debug\Common.Logging.Log4Net.dll</HintPath>
