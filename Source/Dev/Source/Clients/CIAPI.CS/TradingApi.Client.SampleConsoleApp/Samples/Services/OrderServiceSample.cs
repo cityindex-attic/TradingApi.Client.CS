@@ -26,7 +26,7 @@ namespace TradingApi.Client.SampleConsoleApp.Samples.Services
 
             // Get account Info
             int tradingAccountId = 0;
-            foreach (var tradingAccountDTO in CiApi.Instance.ServiceManager.AccountInfoService.GetClientAndTradingAccount().TradingAccounts)
+            foreach (var tradingAccountDTO in CiApi.Instance.ServiceManager.AccountInformationService.GetClientAndTradingAccount().TradingAccounts)
             {
                 if(tradingAccountDTO.TradingAccountCode == username.ToUpper())
                     tradingAccountId = tradingAccountDTO.TradingAccountId;
@@ -53,7 +53,7 @@ namespace TradingApi.Client.SampleConsoleApp.Samples.Services
             }
 
             // Get the last 50 orders in history for this trading account
-            var orderHistoryList = CiApi.Instance.ServiceManager.OrderService.ListOrderHistory(tradingAccountId, 50);
+            var orderHistoryList = CiApi.Instance.ServiceManager.OrderService.ListStopLimitOrderHistory(tradingAccountId, 50);
             int i = 1;
             foreach (var orderHistoryDTO in orderHistoryList.StopLimitOrderHistory)
             {

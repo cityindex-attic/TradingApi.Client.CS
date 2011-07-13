@@ -34,7 +34,7 @@ namespace TradingApi.Client.SampleConsoleApp.Samples.Streams
 
                 // Login
                 var logonResponse =  CiApi.Instance.Login(username, password, tradingApiBaseUri);
-
+                
                 // Set the streaming url
                 CiApi.Instance.StreamingManager.StreamingUrl = lightstreamerUrl;
 

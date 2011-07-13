@@ -3,7 +3,6 @@ using NUnit.Framework;
 using RESTWebServicesDTO.Response;
 using Rhino.Mocks;
 using TradingApi.Client.Framework.ApiFacade;
-using TradingApi.Client.Framework.Services;
 using TradingApi.Client.Framework.Streaming;
 
 namespace TradingApi.Client.Framework.Tests.ApiFacade.Tests
@@ -16,20 +15,12 @@ namespace TradingApi.Client.Framework.Tests.ApiFacade.Tests
         private const string TRADING_URL = "http://couldBeAnyUrl/TradingApi";
         private IApiConnection _mockApiConnection;
         private IStreamingManager _mockStreamingManager;
-        private MarketInfoServiceFactory _mockMarketInfoServiceFactory;
-        private AccountInfoServiceFactory _mockAccountInfoServiceFactory;
-        private CfdMarketServiceFactory _mockCfdMarketServiceFactory;
-        private OrderServiceFactory _mockOrderServiceFactory;
 
         [SetUp]
         public void Setup()
         {
             _mockApiConnection = MockRepository.GenerateMock<IApiConnection>();
             _mockStreamingManager = MockRepository.GenerateMock<IStreamingManager>();
-            _mockMarketInfoServiceFactory = MockRepository.GenerateMock<MarketInfoServiceFactory>();
-            _mockAccountInfoServiceFactory = MockRepository.GenerateMock<AccountInfoServiceFactory>();
-            _mockCfdMarketServiceFactory = MockRepository.GenerateMock<CfdMarketServiceFactory>();
-            _mockOrderServiceFactory = MockRepository.GenerateMock<OrderServiceFactory>();
         }
 
         [Test]

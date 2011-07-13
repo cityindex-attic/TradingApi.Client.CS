@@ -26,8 +26,8 @@ namespace TradingApi.Client.SampleConsoleApp.Samples.Services
                 // Login
                 CiApi.Instance.Login(tradingAccountCode, password, tradingApiBaseUri);
 
-                // Get Market Info
-                var accountInfo = CiApi.Instance.ServiceManager.AccountInfoService.GetClientAndTradingAccount();
+                // Get account information
+                var accountInfo = CiApi.Instance.ServiceManager.AccountInformationService.GetClientAndTradingAccount();
 
                 // Search markets available to client, get back the 100 results:
                 // 1) If query is empty the rest of the searchByMarketName and searchByMarketCode parameters are ignored

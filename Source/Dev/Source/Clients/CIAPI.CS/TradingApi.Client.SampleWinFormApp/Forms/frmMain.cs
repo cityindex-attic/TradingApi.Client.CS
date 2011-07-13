@@ -61,12 +61,14 @@ namespace TradingApi.Client.SampleWinFormApp
                     
                     CiApi.Instance.StreamingManager.StreamingUrl = _g.StreamingServer;
 
-                    var accountInformation = CiApi.Instance.ServiceManager.AccountInfoService.GetClientAndTradingAccount();
+                    var accountInformation = CiApi.Instance.ServiceManager.AccountInformationService.GetClientAndTradingAccount();
 
                     var cfdMarkets = CiApi.Instance.ServiceManager.CfdMarketService.ListCfdMarkets("", true, true, accountInformation.ClientAccountId, 100);
                     
                     List<int> marketIdList = new List<int>();
                     foreach (var cfdMarket in cfdMarkets.Markets) { marketIdList.Add(cfdMarket.MarketId); }
+
+                    var marketInfoListResponse = CiApi.Instance.ServiceManager.MarketInformationService.ListMarketInformation(marketIdList);
 
                     CiApi.Instance.StreamingManager.Streams.PriceStream.SubscribeToMarketPriceList(marketIdList);
 
@@ -107,8 +109,6 @@ namespace TradingApi.Client.SampleWinFormApp
 
             }
 
-
-//todo: could hook this up to prices
             private void PriceUpdateHandler(PriceDTO priceUpdate)
             {
 

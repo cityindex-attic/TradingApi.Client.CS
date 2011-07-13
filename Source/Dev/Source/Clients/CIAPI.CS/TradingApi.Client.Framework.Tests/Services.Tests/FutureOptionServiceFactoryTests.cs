@@ -1,12 +1,11 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Rhino.Mocks;
 using TradingApi.Client.Framework.Services;
 
 namespace TradingApi.Client.Framework.Tests.Services.Tests
 {
     [TestFixture]
-    public class OrderServiceFactoryTests
+    public class FutureOptionServiceFactoryTests
     {
         private IApiConnection _mockApiConnection;
 
@@ -17,10 +16,10 @@ namespace TradingApi.Client.Framework.Tests.Services.Tests
         }
         
         [Test]
-        public void OrderServiceFactoryCreatesOrderServiceWithAValidApiConnection()
+        public void FutureOptionServiceFactoryCreatesFutureOptionServiceWithAValidApiConnection()
         {
-            var service = new OrderServiceFactory().Create(_mockApiConnection);
-            Assert.IsInstanceOfType(typeof(OrderService), service);
+            var service = new FutureOptionServiceFactory().Create(_mockApiConnection);
+            Assert.IsInstanceOfType(typeof(FutureOptionService), service);
         }
     }
 }

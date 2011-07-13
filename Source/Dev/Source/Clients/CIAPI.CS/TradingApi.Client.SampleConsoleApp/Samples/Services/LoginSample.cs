@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Threading;
 using Common.Logging;
 using TradingApi.Client.Core.Exceptions;
 using TradingApi.Client.Framework.ApiFacade;
@@ -25,17 +26,21 @@ namespace TradingApi.Client.SampleConsoleApp.Samples.Services
 
                 // Login
                 string session = CiApi.Instance.Login(username, password, tradingApiBaseUri).Session;
-
+                
                 // Client session
                 Log.Info("My session: " + session);
+
+                Thread.Sleep(10000);
             }
             catch (ApiCallException apiCallException)
             {
                 Log.Error(apiCallException.Message);
+                Thread.Sleep(10000);
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
+                Thread.Sleep(10000);
             }
         }
     }

@@ -7,7 +7,7 @@ using TradingApi.Client.Framework.Streaming.LightStreamer.Connection;
 
 namespace TradingApi.Client.Framework.ApiFacade
 {
-    public class CiApi
+    public class CiApi : ICiApi
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(CiApi));
         private static volatile CiApi _uniqueInstance;
@@ -36,7 +36,7 @@ namespace TradingApi.Client.Framework.ApiFacade
                 return _uniqueInstance;
             }
         }
-
+        
         internal IApiConnection ApiConnection
         {
             get { return _apiConnection; }
@@ -47,8 +47,8 @@ namespace TradingApi.Client.Framework.ApiFacade
             _apiConnection = apiConnection;
             _streamingManager = streamingManager;
         }
-        
-        public IStreamingManager StreamingManager
+
+        public virtual IStreamingManager StreamingManager
         {
             get
             {
@@ -68,7 +68,7 @@ namespace TradingApi.Client.Framework.ApiFacade
             }
         }
 
-        public ServiceManager ServiceManager
+        public virtual ServiceManager ServiceManager
         {
             get {
                 try
@@ -87,12 +87,12 @@ namespace TradingApi.Client.Framework.ApiFacade
             }
         }
 
-        public bool LoggedIn
+        public virtual bool LoggedIn
         {
             get { return _loggedIn; }
         }
 
-        public string UserName
+        public virtual string UserName
         {
             get
             {
@@ -110,7 +110,7 @@ namespace TradingApi.Client.Framework.ApiFacade
             }
         }
 
-        public string Session
+        public virtual string Session
         {
             get
             {

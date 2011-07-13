@@ -13,7 +13,15 @@ namespace TradingApi.Client.Framework.Services
             try
             {
                 Log.Debug("Creating order service");
-                return new OrderService(new OpenPositionsQuery(apiConnection.CoreConnection), new OrderQuery(apiConnection.CoreConnection), new StopLimitOrderHistoryQuery(apiConnection.CoreConnection));
+                return new OrderService(
+                    new OpenPositionsQuery(apiConnection.CoreConnection), 
+                    new OrderQuery(apiConnection.CoreConnection), 
+                    new StopLimitOrderHistoryQuery(apiConnection.CoreConnection), 
+                    new NewStopLimitOrderPlacer(apiConnection.CoreConnection),
+                    new NewTradeOrderPlacer(apiConnection.CoreConnection),
+                    new CancelOrderPlacer(apiConnection.CoreConnection),
+                    new ActiveStopLimitOrderQuery(apiConnection.CoreConnection), 
+                    new TradeHistoryQuery(apiConnection.CoreConnection));
             }
             catch (Exception ex)
             {

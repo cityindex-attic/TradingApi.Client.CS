@@ -79,9 +79,17 @@
   <ItemGroup>
     <Compile Include="ApiFacade.Tests\CiApiTests.cs" />
     <Compile Include="ApiConnectionTests.cs" />
+    <Compile Include="Services.Tests\FutureOptionServiceFactoryTests.cs" />
+    <Compile Include="Services.Tests\FutureOptionServiceTests.cs" />
+    <Compile Include="Services.Tests\MessageServiceFactoryTests.cs" />
+    <Compile Include="Services.Tests\MessageServiceTests.cs" />
+    <Compile Include="Services.Tests\NewsServiceFactoryTests.cs" />
+    <Compile Include="Services.Tests\NewsServiceTests.cs" />
     <Compile Include="Services.Tests\OrderServiceTests.cs" />
     <Compile Include="Services.Tests\OrderServiceFactoryTests.cs" />
     <Compile Include="Services.Tests\ServiceManagerTests.cs" />
+    <Compile Include="Services.Tests\SpreadMarketServiceFactoryTests.cs" />
+    <Compile Include="Services.Tests\SpreadMarketsServiceTests.cs" />
     <Compile Include="StreamingTests\LightStreamerTests\ConnectionTests\FactoryTests\DefaultStreamingClientAccountConnectionFactoryTests.cs" />
     <Compile Include="StreamingTests\LightStreamerTests\ConnectionTests\LightStreamerConnectionManagerTests.cs" />
     <Compile Include="StreamingTests\LightStreamerTests\StreamFactoryTests\OrderStreamFactoryTests.cs" />
@@ -89,15 +97,15 @@
     <Compile Include="StreamingTests\LightStreamerTests\StreamFactoryTests\NewsStreamFactoryTests.cs" />
     <Compile Include="StreamingTests\LightStreamerTests\StreamListenerTests\NewsStreamTests.cs" />
     <Compile Include="StreamingTests\StreamingManagerTests.cs" />
-    <Compile Include="Services.Tests\AccountInfoServiceFactoryTests.cs" />
+    <Compile Include="Services.Tests\AccountInformationServiceFactoryTests.cs" />
     <Compile Include="Services.Tests\CfdMarketServiceTests.cs" />
     <Compile Include="Services.Tests\CfdMarketServiceFactoryTests.cs" />
     <Compile Include="StreamingTests\LightStreamerTests\StreamFactoryTests\PriceStreamFactoryTests.cs" />
-    <Compile Include="Services.Tests\MarketInfoServiceFactoryTests.cs" />
+    <Compile Include="Services.Tests\MarketInformationServiceFactoryTests.cs" />
     <Compile Include="StreamingTests\LightStreamerTests\ConnectionTests\FactoryTests\DefaultCityindexStreamingConnectionFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services.Tests\AccountInfoServiceTests.cs" />
-    <Compile Include="Services.Tests\MarketInfoServiceTests.cs" />
+    <Compile Include="Services.Tests\AccountInformationServiceTests.cs" />
+    <Compile Include="Services.Tests\MarketInformationServiceTests.cs" />
     <Compile Include="StreamingTests\LightStreamerTests\StreamListenerTests\PriceStreamTests.cs" />
     <Compile Include="StreamingTests\StreamsTests.cs" />
   </ItemGroup>

@@ -5,17 +5,18 @@ using Common.Logging;
 using TradingApi.Client.Core.Exceptions;
 using TradingApi.Client.Framework.ApiFacade;
 
-namespace TradingApi.Client.SampleConsoleApp.Samples.Services
+namespace TradingApi.Client.SampleConsoleApp.Samples.MockingTheApi
 {
-    public class MarketInfoServiceSample
+    public class MockableLoginSample
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(MarketInfoServiceSample)); 
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MockableLoginSample)); 
+
 
         public static void Run()
         {
             try
             {
-                Log.Info("MarketInfoService sample...");
+                Log.Info("Mockable login sample...");
 
                 // Get the username and password
                 string username = ConfigurationManager.AppSettings["TradingAccountCode"];
@@ -25,27 +26,22 @@ namespace TradingApi.Client.SampleConsoleApp.Samples.Services
                 string tradingApiBaseUri = ConfigurationManager.AppSettings["TradingApiBaseUri"];
 
                 // Login
-                CiApi.Instance.Login(username, password, tradingApiBaseUri);
-
-                // Get Market Info
-                const int validMarketId = 400481134;
-                var marketInfo = CiApi.Instance.ServiceManager.MarketInfoService.GetMarketInfo(validMarketId);
-
-                // Log market name
-                Log.Info("Market name: " + marketInfo.MarketInformation.Name);
+                string session = new ClientLoginClass().ClientLogin(username, password, tradingApiBaseUri);
+                
+                // Client session
+                Log.Info("My session: " + session);
 
                 Thread.Sleep(10000);
-
-                // Logout
-                CiApi.Instance.Logout();
             }
             catch (ApiCallException apiCallException)
             {
                 Log.Error(apiCallException.Message);
+                Thread.Sleep(10000);
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
+                Thread.Sleep(10000);
             }
         }
     }

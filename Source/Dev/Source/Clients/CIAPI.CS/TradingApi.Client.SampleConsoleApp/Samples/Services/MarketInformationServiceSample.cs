@@ -7,43 +7,36 @@ using TradingApi.Client.Framework.ApiFacade;
 
 namespace TradingApi.Client.SampleConsoleApp.Samples.Services
 {
-    public class AccountInfoServiceSample
+    public class MarketInformationServiceSample
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(AccountInfoServiceSample));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MarketInformationServiceSample)); 
 
         public static void Run()
         {
             try
             {
-                Log.Info("AccountInfoService sample...");
+                Log.Info("MarketInformationService sample...");
 
                 // Get the username and password
                 string username = ConfigurationManager.AppSettings["TradingAccountCode"];
                 string password = ConfigurationManager.AppSettings["Password"];
 
-                // Set trading api base uri
+                // Get trading api base uri
                 string tradingApiBaseUri = ConfigurationManager.AppSettings["TradingApiBaseUri"];
 
                 // Login
                 CiApi.Instance.Login(username, password, tradingApiBaseUri);
 
-                // Get account Info
-                var accountInfo = CiApi.Instance.ServiceManager.AccountInfoService.GetClientAndTradingAccount();
+                // Get Market Info
+                const int validMarketId = 400481134;
+                var marketInfo = CiApi.Instance.ServiceManager.MarketInformationService.GetMarketInformation(validMarketId);
 
-                // Get trading account info
-                var tradingAccountsList = accountInfo.TradingAccounts;
-                var tradingAccount = tradingAccountsList[0];
-
-                // Log client details
-                Log.Info("Client account id: " + accountInfo.ClientAccountId);
-                Log.Info("Client account currency: " + accountInfo.ClientAccountCurrency);
-                Log.Info("Number of trading accounts: " + accountInfo.TradingAccounts.Count);
-
-                if(tradingAccount != null)
-                    Log.Info("Trading account type: " + tradingAccount.TradingAccountType);
+                // Log market name
+                Log.Info("Market name: " + marketInfo.MarketInformation.Name);
 
                 Thread.Sleep(10000);
 
+                // Logout
                 CiApi.Instance.Logout();
             }
             catch (ApiCallException apiCallException)

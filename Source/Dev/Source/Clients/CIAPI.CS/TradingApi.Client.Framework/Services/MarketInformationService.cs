@@ -5,18 +5,18 @@ using TradingApi.Client.Core;
 
 namespace TradingApi.Client.Framework.Services
 {
-    public class MarketInfoService : ServiceBase
+    public class MarketInformationService : ServiceBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(MarketInfoService));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MarketInformationService));
         private readonly MarketInformationQuery _marketInformationQuery;
 
-        internal MarketInfoService(
+        internal MarketInformationService(
             MarketInformationQuery marketInformationQuery)
         {
             _marketInformationQuery = marketInformationQuery;
         }
 
-        public GetMarketInformationResponseDTO GetMarketInfo(int marketId)
+        public GetMarketInformationResponseDTO GetMarketInformation(int marketId)
         {
             Log.InfoFormat("Getting market information with market id: {0}.", marketId);
             var marketInfo = _marketInformationQuery.GetMarketInformation(marketId);

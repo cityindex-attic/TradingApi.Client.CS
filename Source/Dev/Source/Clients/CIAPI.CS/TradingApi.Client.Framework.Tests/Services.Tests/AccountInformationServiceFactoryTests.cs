@@ -5,7 +5,7 @@ using TradingApi.Client.Framework.Services;
 namespace TradingApi.Client.Framework.Tests.Services.Tests
 {
     [TestFixture]
-    public class AccountInfoServiceFactoryTests
+    public class AccountInformationServiceFactoryTests
     {
         private IApiConnection _mockApiConnection;
 
@@ -18,8 +18,8 @@ namespace TradingApi.Client.Framework.Tests.Services.Tests
         [Test]
         public void AccountServiceFactoryCreatesMarketInfoServiceWithAValidApiConnection()
         {
-            var service = new AccountInfoServiceFactory().Create(_mockApiConnection);
-            Assert.IsInstanceOfType(typeof(AccountInfoService), service);
+            var service = new AccountInformationServiceFactory().Create(_mockApiConnection);
+            Assert.IsInstanceOfType(typeof(AccountInformationService), service);
         }
     }
 }

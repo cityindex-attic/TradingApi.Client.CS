@@ -12,7 +12,7 @@ namespace TradingApi.Client.Framework.Tests.Services.Tests
     public class CfdMarketServiceTests
     {
         [Test]
-        public void ListCfdMarketsCallsTheCorrectMethodFromTheUnderlyingCfdMarketQueryClass()
+        public void ListCfdMarketsCallsTheCorrectMethodFromTheUnderlyingCore()
         {
             //Arrange
             const string query = "query";

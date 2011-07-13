@@ -5,14 +5,22 @@ namespace TradingApi.Client.Framework.Services
     public class ServiceManager
     {
         private IApiConnection _apiConnection;
-        private MarketInfoServiceFactory _marketInfoServiceFactory;
-        private AccountInfoServiceFactory _accountInfoServiceFactory;
+        private MarketInformationServiceFactory _marketInformationServiceFactory;
+        private AccountInformationServiceFactory _accountInformationServiceFactory;
         private CfdMarketServiceFactory _cfdMarketServiceFactory;
         private OrderServiceFactory _orderServiceFactory;
-        private MarketInfoService _marketInfoService;
-        private AccountInfoService _accountInfoService;
+        private FutureOptionServiceFactory _futureOptionServiceFactory;
+        private MessageServiceFactory _messageServiceFactory;
+        private NewsServiceFactory _newsServiceFactory;
+        private SpreadMarketServiceFactory _spreadMarketServiceFactory;
+        private MarketInformationService _marketInformationService;
+        private AccountInformationService _accountInformationService;
         private CfdMarketService _cfdMarketService;
         private OrderService _orderService;
+        private FutureOptionService _futureOptionService;
+        private MessageService _messageService;
+        private NewsService _newsService;
+        private SpreadMarketService _spreadMarketService;
 
         internal ServiceManager(){}
 
@@ -21,40 +29,44 @@ namespace TradingApi.Client.Framework.Services
             _apiConnection = apiConnection;
         }
 
-        internal void SetUpServiceManagerForMocking(IApiConnection apiConnection, MarketInfoServiceFactory marketInfoServiceFactory, AccountInfoServiceFactory accountInfoServiceFactory, CfdMarketServiceFactory cfdMarketServiceFactory, OrderServiceFactory orderServiceFactory)
+        internal void SetUpServiceManagerForMocking(IApiConnection apiConnection, MarketInformationServiceFactory marketInformationServiceFactory, AccountInformationServiceFactory accountInformationServiceFactory, CfdMarketServiceFactory cfdMarketServiceFactory, OrderServiceFactory orderServiceFactory, FutureOptionServiceFactory futureOptionServiceFactory, MessageServiceFactory messageServiceFactory, NewsServiceFactory newsServiceFactory, SpreadMarketServiceFactory spreadMarketServiceFactory)
         {
             _apiConnection = apiConnection;
-            _marketInfoServiceFactory = marketInfoServiceFactory;
-            _accountInfoServiceFactory = accountInfoServiceFactory;
+            _marketInformationServiceFactory = marketInformationServiceFactory;
+            _accountInformationServiceFactory = accountInformationServiceFactory;
             _cfdMarketServiceFactory = cfdMarketServiceFactory;
             _orderServiceFactory = orderServiceFactory;
+            _futureOptionServiceFactory = futureOptionServiceFactory;
+            _messageServiceFactory = messageServiceFactory;
+            _newsServiceFactory = newsServiceFactory;
+            _spreadMarketServiceFactory = spreadMarketServiceFactory;
         }
 
-        public MarketInfoService MarketInfoService
+        public MarketInformationService MarketInformationService
         {
             get
             {
-                if (_marketInfoService != null) return _marketInfoService;
+                if (_marketInformationService != null) return _marketInformationService;
 
-                if (_marketInfoServiceFactory == null)
-                    _marketInfoServiceFactory = new MarketInfoServiceFactory();
-                _marketInfoService = _marketInfoServiceFactory.Create(_apiConnection);
+                if (_marketInformationServiceFactory == null)
+                    _marketInformationServiceFactory = new MarketInformationServiceFactory();
+                _marketInformationService = _marketInformationServiceFactory.Create(_apiConnection);
 
-                return _marketInfoService;
+                return _marketInformationService;
             }
         }
 
-        public AccountInfoService AccountInfoService
+        public AccountInformationService AccountInformationService
         {
             get
             {
-                if (_accountInfoService != null) return _accountInfoService;
+                if (_accountInformationService != null) return _accountInformationService;
 
-                if (_accountInfoServiceFactory == null)
-                    _accountInfoServiceFactory = new AccountInfoServiceFactory();
-                _accountInfoService = _accountInfoServiceFactory.Create(_apiConnection);
+                if (_accountInformationServiceFactory == null)
+                    _accountInformationServiceFactory = new AccountInformationServiceFactory();
+                _accountInformationService = _accountInformationServiceFactory.Create(_apiConnection);
 
-                return _accountInfoService;
+                return _accountInformationService;
             }
         }
 
@@ -83,6 +95,64 @@ namespace TradingApi.Client.Framework.Services
                 _orderService = _orderServiceFactory.Create(_apiConnection);
 
                 return _orderService;
+            }
+        }
+
+        public FutureOptionService FutureOptionService
+        {
+            get
+            {
+                if (_futureOptionService != null) return _futureOptionService;
+
+                if (_futureOptionServiceFactory == null)
+                    _futureOptionServiceFactory = new FutureOptionServiceFactory();
+                _futureOptionService = _futureOptionServiceFactory.Create(_apiConnection);
+
+                return _futureOptionService;
+            }
+        }
+
+        public MessageService MessageService
+        {
+            get
+            {
+                if (_messageService != null) return _messageService;
+
+                if (_messageServiceFactory == null)
+                    _messageServiceFactory = new MessageServiceFactory();
+                _messageService = _messageServiceFactory.Create(_apiConnection);
+
+                return _messageService;
+            }
+        }
+
+        public NewsService NewsService
+        {
+            get
+            {
+                if (_newsService != null) return _newsService;
+
+                if (_newsServiceFactory == null)
+                    _newsServiceFactory = new NewsServiceFactory();
+                _newsService = _newsServiceFactory.Create(_apiConnection);
+
+                return _newsService;
+            }
+        }
+
+        public SpreadMarketService SpreadMarketService
+        {
+            get {
+                if (_spreadMarketService != null) return _spreadMarketService;
+
+                if(_spreadMarketServiceFactory == null)
+                    _spreadMarketServiceFactory = new SpreadMarketServiceFactory();
+                _spreadMarketService = _spreadMarketServiceFactory.Create(_apiConnection);
+
+                return _spreadMarketService;
+            }
+            set {
+                _spreadMarketService = value;
             }
         }
     }

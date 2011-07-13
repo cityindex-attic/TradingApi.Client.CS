@@ -115,7 +115,5 @@ namespace TradingApi.Client.Framework.Tests.StreamingTests.LightStreamerTests.St
             mockPriceListener.VerifyAllExpectations();
             mockPriceListener2.VerifyAllExpectations();
         }
-
-        //todo: test for the PriceListenerMessageReceived actually being called???
     }
 }

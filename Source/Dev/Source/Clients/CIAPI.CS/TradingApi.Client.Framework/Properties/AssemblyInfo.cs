@@ -34,4 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 //[assembly: AssemblyVersion("1.0.0.0")] Versioned in build processs
 //[assembly: AssemblyFileVersion("1.0.0.0")] Versioned in build process
-[assembly: InternalsVisibleTo("TradingApi.Client.Framework.Tests")][assembly:AssemblyFileVersion("0.1.0707.14")]
+[assembly: InternalsVisibleTo("TradingApi.Client.Framework.Tests")][assembly:AssemblyFileVersion("0.1.1307.3")]

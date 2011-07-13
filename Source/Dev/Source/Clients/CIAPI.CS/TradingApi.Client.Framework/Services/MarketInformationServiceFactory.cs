@@ -4,16 +4,16 @@ using TradingApi.Client.Core;
 
 namespace TradingApi.Client.Framework.Services
 {
-    public class MarketInfoServiceFactory
+    public class MarketInformationServiceFactory
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(MarketInfoServiceFactory));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MarketInformationServiceFactory));
 
-        public virtual MarketInfoService Create(IApiConnection apiConnection)
+        public virtual MarketInformationService Create(IApiConnection apiConnection)
         {
             try
             {
                 Log.Debug("Creating market information service");
-                return new MarketInfoService(new MarketInformationQuery(apiConnection.CoreConnection));
+                return new MarketInformationService(new MarketInformationQuery(apiConnection.CoreConnection));
             }
             catch (Exception ex)
             {
@@ -22,7 +22,7 @@ namespace TradingApi.Client.Framework.Services
             }
             
             // Alternatively could cache at the actual service method call i.e use an enum
-            // new MarketServiceFactory().Create().GetMarketInfo(cableMarketId, Cache.On);
+            // new MarketServiceFactory().Create().GetMarketInformation(cableMarketId, Cache.On);
         }
     }
 }

@@ -30,7 +30,6 @@ namespace TradingApi.Client.Framework.Streaming.LightStreamer.StreamListener
         {
             Log.Info("Subscribing to orders.");
             var orderListener = _lsCityindexStreamingClientConnection.BuildOrderListener("ORDERS");
-            //Todo: test for event handler
             orderListener.MessageReceived += new EventHandler<MessageEventArgs<OrderDTO>>(OnOrderListener_MessageReceived);
             orderListener.Start();
             _orderListeners.Add(orderListener);

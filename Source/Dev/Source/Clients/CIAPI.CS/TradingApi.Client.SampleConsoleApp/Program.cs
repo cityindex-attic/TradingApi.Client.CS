@@ -1,5 +1,6 @@
 ﻿using TradingApi.Client.Framework;
 using Common.Logging;
+using TradingApi.Client.SampleConsoleApp.Samples.MockingTheApi;
 using TradingApi.Client.SampleConsoleApp.Samples.Services;
 using TradingApi.Client.SampleConsoleApp.Samples.Streams;
 
@@ -14,13 +15,17 @@ namespace TradingApi.Client.SampleConsoleApp
             //LoginSample.Run();
             //SubscribeToPriceStreamSample.Run();
             //SubscribeToPriceListStreamSample.Run();
-            //AccountInfoServiceSample.Run();
+            //AccountInformationServiceSample.Run();
             //CfdMarketServiceSample.Run();
-            //MarketInfoServiceSample.Run();
+            //MarketInformationServiceSample.Run();
             //SubscribeToNewsStreamSample.Run();
             //SubscribeToOrderStreamSample.Run();
             //SubscribeToMultipleStreams.Run();
-            OrderServiceSample.Run();
+            //OrderServiceSample.Run();
+            //MockableLoginSample.Run();
+            //MessageServiceSample.Run();
+            //NewsServiceSample.Run();
+            SpreadMarketServiceSample.Run();
 
             Log.Info("Sample completed!");
         }

@@ -32,7 +32,6 @@ namespace TradingApi.Client.Framework.Streaming.LightStreamer.StreamListener
         {
             Log.Info("Subscribing to news headlines for region: " + region + ".");
             IStreamingListener<NewsDTO> newsListener = _lsCityindexStreamingConnection.BuildNewsHeadlinesListener(NEWS_ADAPTER + "HEADLINES." + region);
-            //Todo: test for event handler
             newsListener.MessageReceived +=new EventHandler<MessageEventArgs<NewsDTO>>(NewsListener_MessageReceived);
             newsListener.Start();
             _listeners.Add(newsListener);

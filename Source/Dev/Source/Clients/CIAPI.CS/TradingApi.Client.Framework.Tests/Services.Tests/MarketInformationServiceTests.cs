@@ -8,7 +8,7 @@ using TradingApi.Client.Framework.Services;
 namespace TradingApi.Client.Framework.Tests.Services.Tests
 {
     [TestFixture]
-    public class MarketInfoServiceTests
+    public class MarketInformationServiceTests
     {
         private Connection _mockConnection;
 
@@ -28,7 +28,7 @@ namespace TradingApi.Client.Framework.Tests.Services.Tests
                 .Return(new GetMarketInformationResponseDTO());
 
             //Act
-            var response = new MarketInfoService(mockMarketInformationQuery).GetMarketInfo(marketId);
+            var response = new MarketInformationService(mockMarketInformationQuery).GetMarketInformation(marketId);
 
             //Assert
             Assert.IsInstanceOfType(typeof(GetMarketInformationResponseDTO), response);
@@ -45,7 +45,7 @@ namespace TradingApi.Client.Framework.Tests.Services.Tests
                 .Return(new ListMarketInformationResponseDTO());
 
             //Act
-            var response = new MarketInfoService(mockMarketInformationQuery).ListMarketInformation(marketIdList);
+            var response = new MarketInformationService(mockMarketInformationQuery).ListMarketInformation(marketIdList);
 
             //Assert
             Assert.IsInstanceOfType(typeof(ListMarketInformationResponseDTO), response);
